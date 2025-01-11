@@ -56,7 +56,7 @@ const Navbar = () => {
     : [...data, { id: 5, link: '/login', title: 'Login' }];
 
   return (
-    <nav className='sticky top-0 left-0 w-full z-50 shadow-lg bg-background border-b border-white'>
+    <nav className='sticky top-0 left-0 w-full z-50 shadow-lg bg-background border-b border-border'>
       <div className='max-w-6xl mx-auto px-4'>
         <div className='flex justify-between h-16 items-center'>
           <div className='flex-shrink-0 flex items-center'>
