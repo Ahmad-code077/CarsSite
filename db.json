@@ -157,13 +157,13 @@
     {
       "id": "15",
       "name": "Subaru Outback",
-      "model": "2029",
-      "dailyRate": 588,
-      "seats": 590,
+      "model": "2020",
+      "dailyRate": 58,
+      "seats": 5,
       "numberPlate": "NOP-333",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRph1fl21KynPj6weFBpHPq6CssdJcWJ_TIDH8hHlwb50ge9zS4Cb4h_w-yqJ3CWlnbwkE&usqp=CAU",
       "brand": "Subaru",
-      "availability": true
+      "availability": false
     }
   ]
 }
