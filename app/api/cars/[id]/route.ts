@@ -54,9 +54,10 @@ export async function PATCH(
 
 export async function DELETE(
   request: Request,
-  { params }: { params: { id: string } }
+  context: { params: { id: string } }
 ) {
-  const { id } = params;
+  const { id } = context.params; // Access `id` from `context.params`
+
   try {
     const deleteCar = await prisma.car.delete({
       where: { id },
@@ -65,12 +66,12 @@ export async function DELETE(
   } catch (error: unknown) {
     if (error instanceof Error) {
       return NextResponse.json(
-        { error: error.message || 'Failed to Delete Car' },
+        { error: error.message || 'Failed to delete car' },
         { status: 500 }
       );
     }
-    NextResponse.json(
-      { error: 'The unknown Error happend on delete api' },
+    return NextResponse.json(
+      { error: 'An unknown error occurred while deleting the car' },
       { status: 500 }
     );
   }
