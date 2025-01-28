@@ -52,12 +52,12 @@ export async function PATCH(
   }
 }
 
+// DELETE /api/cars/:id - Delete car by ID
 export async function DELETE(
   request: Request,
   context: { params: { id: string } }
 ) {
-  const { id } = context.params; // Access `id` from `context.params`
-
+  const { id } = await context.params; // Await the params before using its properties
   try {
     const deleteCar = await prisma.car.delete({
       where: { id },

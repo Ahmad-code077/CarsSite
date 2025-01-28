@@ -59,14 +59,10 @@ const DeleteCarPopup: React.FC<DeleteCarPopupProps> = ({
   const showToast = useShowToast();
 
   const handleDeleteCar = async () => {
-    console.log(carId);
     try {
-      const response = await fetch(
-        `http://localhost:3000/api/cars/${String(carId)}`,
-        {
-          method: 'DELETE',
-        }
-      );
+      const response = await fetch(`http://localhost:3000/api/cars/${carId}`, {
+        method: 'DELETE',
+      });
 
       if (response.ok) {
         showToast({
