@@ -62,7 +62,7 @@ const DeleteCarPopup: React.FC<DeleteCarPopupProps> = ({
     console.log(carId);
     try {
       const response = await fetch(
-        `http://localhost:5000/cars/${String(carId)}`,
+        `http://localhost:3000/api/cars/${String(carId)}`,
         {
           method: 'DELETE',
         }

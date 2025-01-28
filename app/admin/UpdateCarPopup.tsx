@@ -59,8 +59,8 @@ const UpdateCarPopup: React.FC<UpdateCarPopupProps> = ({
   // Handle form submission
   const handleUpdateCar = async (data: CarFormValues) => {
     try {
-      const response = await fetch(`http://localhost:5000/cars/${car.id}`, {
-        method: 'PATCH', // Use PATCH to update only specific fields
+      const response = await fetch(`http://localhost:3000/api/cars/${car.id}`, {
+        method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
         },

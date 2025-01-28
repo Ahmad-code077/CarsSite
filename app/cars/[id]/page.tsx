@@ -17,7 +17,7 @@ const SingleCar: React.FC = () => {
     const fetchCar = async () => {
       try {
         // Replace this URL with the appropriate endpoint for fetching cars
-        const response = await fetch('http://localhost:5000/cars');
+        const response = await fetch('http://localhost:3000/api/cars');
         if (!response.ok) {
           throw new Error('Failed to fetch car');
         }

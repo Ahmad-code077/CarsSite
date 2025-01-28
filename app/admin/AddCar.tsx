@@ -8,7 +8,6 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { useShowToast } from '@/components/Toast';
 
-// Define validation schema for the car form using Zod
 const carSchema = z.object({
   name: z.string().min(1, 'Car Name is required'),
   model: z.string().min(1, 'Model is required'),
@@ -41,13 +40,12 @@ const AddCarPopup: React.FC<AddCarPopupProps> = ({ onClose, refreshCars }) => {
 
   const handleAddCar = async (data: CarFormValues) => {
     try {
-      const response = await fetch('http://localhost:5000/cars', {
+      const response = await fetch('http://localhost:3000/api/cars', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          id: new Date().getTime().toString(), // Generate unique id for the new car
           ...data,
         }),
       });
@@ -59,7 +57,7 @@ const AddCarPopup: React.FC<AddCarPopupProps> = ({ onClose, refreshCars }) => {
         });
         refreshCars();
         onClose();
-        reset(); // Reset form after successful submission
+        reset();
       } else {
         showToast({
           title: 'Error Adding Car',

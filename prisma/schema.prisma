@@ -1,0 +1,20 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Car {
+  id           String  @id @default(auto()) @map("_id") @db.ObjectId
+  name         String
+  model        String
+  dailyRate    Float
+  seats        Int
+  numberPlate  String  @unique
+  image        String
+  brand        String
+  availability Boolean @default(true)
+}
