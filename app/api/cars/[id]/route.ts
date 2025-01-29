@@ -2,19 +2,23 @@ import prisma from '@/lib/prisma';
 import { NextResponse } from 'next/server';
 
 // PATCH /api/cars/:id - Update car by ID
-export async function PATCH(request: Request) {
-  const urlParts = request.url.split('/');
-  const id = urlParts[urlParts.length - 1]; // Get ID from the request URL
-
-  if (!id) {
-    return NextResponse.json({ error: 'Car ID is missing' }, { status: 400 });
+export async function PATCH(
+  request: Request,
+  {
+    params,
+  }: {
+    params: Promise<{ id: string }>;
   }
-
+) {
   try {
+    const id = (await params).id;
+    console.log('Received ID:', id);
+
     const body = await request.json();
+
     const updatedCar = await prisma.car.update({
       where: { id },
-      data: body, // Use the full body for update
+      data: body,
     });
 
     return NextResponse.json(updatedCar, { status: 200 });
@@ -29,15 +33,25 @@ export async function PATCH(request: Request) {
 }
 
 // DELETE /api/cars/:id - Delete car by ID
-export async function DELETE(request: Request) {
-  const urlParts = request.url.split('/');
-  const id = urlParts[urlParts.length - 1]; // Get ID from the request URL
-
-  if (!id) {
-    return NextResponse.json({ error: 'Car ID is missing' }, { status: 400 });
+export async function DELETE(
+  request: Request,
+  {
+    params,
+  }: {
+    params: Promise<{ id: string }>;
   }
-
+) {
   try {
+    const id = (await params).id;
+    console.log('Deleting car with ID:', id);
+
+    if (!id) {
+      return NextResponse.json(
+        { error: 'Car ID is required' },
+        { status: 400 }
+      );
+    }
+
     const deletedCar = await prisma.car.delete({
       where: { id },
     });
