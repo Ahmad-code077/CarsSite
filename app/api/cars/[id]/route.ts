@@ -11,7 +11,7 @@ export async function PATCH(
   }
 ) {
   try {
-    const id = (await params).id;
+    const { id } = await params;
     console.log('Received ID:', id);
 
     const body = await request.json();
@@ -42,7 +42,7 @@ export async function DELETE(
   }
 ) {
   try {
-    const id = (await params).id;
+    const { id } = await params;
     console.log('Deleting car with ID:', id);
 
     if (!id) {
