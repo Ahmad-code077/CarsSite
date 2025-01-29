@@ -9,10 +9,7 @@
   "routes": [
     {
       "src": "/api/cars/(.*)",
-      "dest": "/app/api/cars/[id]/route.js"
+      "dest": "/app/api/cars/[id]/route.ts"
     }
-  ],
-  "env": {
-    "DATABASE_URL": "mongodb+srv://ahmadeveloper077:GXhfJpzwlmLPGE8a@blogposts.myl6s.mongodb.net/CarSiteNext?retryWrites=true&w=majority&appName=BlogPosts"
-  }
+  ]
 }
