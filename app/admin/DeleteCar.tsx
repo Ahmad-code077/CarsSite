@@ -33,7 +33,7 @@ const DeleteCarButton: React.FC<DeleteCarButtonProps> = ({
 
       {isDeletePopupVisible && (
         <DeleteCarPopup
-          carId={carId}
+          carId={carId.toString()}
           onClose={handleCloseDeletePopup}
           refreshCars={refreshCars}
         />

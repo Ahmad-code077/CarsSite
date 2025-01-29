@@ -1,9 +1,6 @@
-import { PrismaClient } from '@prisma/client';
+import prisma from '@/lib/prisma';
 import { NextResponse } from 'next/server';
 
-const prisma = new PrismaClient();
-
-// GET /api/cars - Fetch all cars
 export async function GET() {
   try {
     const cars = await prisma.car.findMany();
