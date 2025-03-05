@@ -12,10 +12,13 @@ const HomePageCars: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/';
+
+  console.log(apiUrl);
   useEffect(() => {
     const fetchCars = async () => {
       try {
-        const response = await fetch('http://localhost:3000/api/cars');
+        const response = await fetch(`${apiUrl}/api/cars`);
         if (!response.ok) {
           throw new Error('Failed to fetch car data.');
         }
@@ -34,7 +37,7 @@ const HomePageCars: React.FC = () => {
     };
 
     fetchCars();
-  }, []);
+  }, [apiUrl]);
 
   useEffect(() => {
     const lowerCaseSearchTerm = searchTerm.toLowerCase();

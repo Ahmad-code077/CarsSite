@@ -57,10 +57,11 @@ const DeleteCarPopup: React.FC<DeleteCarPopupProps> = ({
   refreshCars,
 }) => {
   const showToast = useShowToast();
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
 
   const handleDeleteCar = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/api/cars/${carId}`, {
+      const response = await fetch(`${apiUrl}/api/cars/${carId}`, {
         method: 'DELETE',
       });
 

@@ -29,10 +29,11 @@ const AdminPage = () => {
       fetchCars();
     }
   }, [router]);
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
 
   const fetchCars = async () => {
     try {
-      const response = await fetch('http://localhost:3000/api/cars');
+      const response = await fetch(`${apiUrl}/api/cars`);
       if (!response.ok) {
         throw new Error('Failed to fetch cars.');
       }

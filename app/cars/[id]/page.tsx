@@ -10,6 +10,7 @@ const SingleCar: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>('');
   const { id } = useParams();
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
 
   useEffect(() => {
     if (!id) return;
@@ -17,7 +18,7 @@ const SingleCar: React.FC = () => {
     const fetchCar = async () => {
       try {
         // Replace this URL with the appropriate endpoint for fetching cars
-        const response = await fetch('http://localhost:3000/api/cars');
+        const response = await fetch(`${apiUrl}/api/cars`);
         if (!response.ok) {
           throw new Error('Failed to fetch car');
         }
@@ -41,7 +42,7 @@ const SingleCar: React.FC = () => {
     };
 
     fetchCar();
-  }, [id]);
+  }, [id, apiUrl]);
 
   if (loading)
     return (

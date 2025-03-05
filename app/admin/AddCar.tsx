@@ -37,10 +37,11 @@ const AddCarPopup: React.FC<AddCarPopupProps> = ({ onClose, refreshCars }) => {
   } = useForm<CarFormValues>({
     resolver: zodResolver(carSchema),
   });
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
 
   const handleAddCar = async (data: CarFormValues) => {
     try {
-      const response = await fetch('http://localhost:3000/api/cars', {
+      const response = await fetch(`${apiUrl}/api.cars`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -55,11 +55,12 @@ const UpdateCarPopup: React.FC<UpdateCarPopupProps> = ({
       availability: car.availability,
     },
   });
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
 
   // Handle form submission
   const handleUpdateCar = async (data: CarFormValues) => {
     try {
-      const response = await fetch(`http://localhost:3000/api/cars/${car.id}`, {
+      const response = await fetch(`${apiUrl}/api/cars/${car.id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
