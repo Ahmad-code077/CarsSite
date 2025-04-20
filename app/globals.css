@@ -43,3 +43,8 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+.modal-overlay {
+  z-index: 9999;
+  background-color: rgba(0, 0, 0, 0.7);
+}
